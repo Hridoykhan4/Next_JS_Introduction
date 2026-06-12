@@ -1,0 +1,41 @@
+404 not found & loading spinner
+
+shob routes kei jodi amra dyncamic korte chai tahole [...slugs] dibo
+then {slugs} = await params
+slugs Ta ekTa array er motw kore thakbe
+
+Use case hote pare jemon ekTa form
+form 1 -- > form 2 -- > form 3
+step by step routing possible
+
+http://localhost:3000/about/das/23/33
+about er por das, 23, 23 tintay dynamic
+
+Abar optional catch all segments o dewa jay
+like [[...slugs]]
+
+
+---------------
+http://localhost:3000/services/3421
+services er por dynamic route thakate ultapalta kisu dileo amaderk 404 e niye jabena, but tokhon error manage korte hbe
+http://localhost:3000/services/3421/23432
+ebar 404 page e jabe coz dynamic path er por extra path ashse
+
+--------------
+
+
+--------------
+Middleware niye express & next js er confusion lage er jnne nextJS proxy recommend kore
+express function proxy(request) {
+    return NextRequest.redirect(new URL('/', request.url))
+}
+export const config = {
+    matcher: '/about/:path*' 
+}
+mane about route e gele ei proxy te jabe then abar home route e redirect korbo
+-------------
+
+
+-------------
+    console.log(request.cookies.get("nextjs-token").value);
+-------------

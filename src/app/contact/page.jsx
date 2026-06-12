@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 const ContactPage = () => {
     const router = useRouter();
-    const isLoggedIn = false
+    const isLoggedIn = true
     const handleOffice = () => {
         if (isLoggedIn) {
             router.push('/contact/offices')
