@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <Navbar></Navbar>
-        <main className="place-items-center grow place-content-center">
+        <main className="grow p-10">
           {children}
         </main>
         <Footer></Footer>

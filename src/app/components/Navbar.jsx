@@ -1,6 +1,13 @@
+'use client'
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
+/* 
+ () diye next js route organize kora jay
+*/
 const Navbar = () => {
+    const pathname = usePathname()
+    if (pathname.includes('dashboard')) return null
     return (
         <div>
             <nav className="flex justify-center">
