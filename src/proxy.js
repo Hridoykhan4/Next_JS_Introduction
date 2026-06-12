@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export function proxy(request) {
-    console.log(request.cookies.get("nextjs-token").value);
+    // console.log(request.cookies.get("nextjs-token").value);
   let isServicePage =   request.nextUrl.pathname.startsWith('/services')
   const dummyUserData = {
     role: 'user',
