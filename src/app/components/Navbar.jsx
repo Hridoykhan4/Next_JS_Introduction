@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 */
 const Navbar = () => {
     const pathname = usePathname()
-    if (pathname.includes('dashboard')) return null
+    if (pathname.includes('dashboard'))  return null
     return (
         <div>
             <nav className="flex justify-center">
@@ -16,6 +16,7 @@ const Navbar = () => {
                     <Link href="/services"><li>Services</li></Link>
                     <Link href="/about"><li>About</li></Link>
                     <Link href="/contact"><li>Contact</li></Link>
+                    <Link href="/posts"><li>Posts</li></Link>
                 </ul>
             </nav>
         </div>
