@@ -1,40 +1,49 @@
-"use client"
-import React, { useEffect, useState } from 'react'
 
 /* 
     ---- WHEN TO USE CSR
 
 */
 
-export default function MealsPage() {
-    const [meals, setMeals] = useState([]);
-    const [search, setSearch] = useState('')
+/* 
+    ------------------
+    User interactivity amra j input field dicchi sheta handle korar jnne separate ekTa component MealSearchInput amra use kortasi
+    server theke data fetching kortasi amra, user actions er jnne client component er help nicchi
 
-    useEffect(() => {
-        const fetchMeals = async () => {
-            try {
-                const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
-                const data = await res.json();
-                setMeals(data?.meals || [])
-                return data.meals
-            }
-            catch (err) {
-                console.log(err);
-                return []
-            }
+*/
+
+
+/* Ekhn amader kaj hobe server component e url search params ta recieve kora & oi searched data fetch kora */
+
+import MealSearchInput from "./components/MealSearchInput"
+
+
+export default async function MealsPage({ searchParams }) {
+    const { search } = await searchParams;
+
+
+
+    const fetchMeals = async () => {
+        try {
+            const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
+            const data = await res.json();
+            return data.meals
         }
-        fetchMeals()
-    }, [search])
+        catch (err) {
+            console.log(err);
+            return []
+        }
+    }
 
-    console.log(meals);
+    const meals = await fetchMeals()
+
 
     return (
         <div>
             <h2 className="underline text-2xl">
                 Total Meals: {meals?.length}
             </h2>
-            <div>
-                <input type="text" value={search} className='border mt-5' onChange={(e) => setSearch(e.target.value)} />
+            <div className="mt-6">
+                <MealSearchInput></MealSearchInput>
             </div>
             {
                 meals?.length === 0 && <p className='mt-4 text-red-600 font-semibold'>OOPSSS! No Meals Found </p>

@@ -39,3 +39,12 @@ mane about route e gele ei proxy te jabe then abar home route e redirect korbo
 -------------
     console.log(request.cookies.get("nextjs-token").value);
 -------------
+
+==============
+ Next.js-এর App Router-এ ফোল্ডারের নামের পাশে ফার্স্ট ব্র্যাকেট বা বন্ধনী যেমন— (dashboard) বা (authPages) ব্যবহার করার অর্থ হলো এটি একটি Route Group (রুট গ্রুপ)।
+ বন্ধনী বা ব্র্যাকেটের ভেতরের নামটি URL-এ যুক্ত হয় না।উদাহরণস্বরূপ, (dashboard) ফোল্ডারের ভেতরে থাকা admin-dashboard ফোল্ডারটির মূল URL হবে ://yourwebsite.com (মাঝের (dashboard) অংশটি URL থেকে বাদ যাবে)।
+==============
+
+====================
+
+===================
