@@ -19,6 +19,7 @@ const Navbar = () => {
                     <Link href="/contact"><li>Contact</li></Link>
                     <Link href="/posts"><li>Posts</li></Link>
                     <Link href="/meals"><li>Meals</li></Link>
+                    <Link href="/phones"><li>Phones</li></Link>
                 </ul>
             </nav>
         </div>

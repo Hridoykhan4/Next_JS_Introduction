@@ -1,0 +1,6 @@
+.phone-container{
+    border: 2px solid red;
+    padding: 0.6rem;
+    box-shadow: 3px 4px 2px red;
+    border-radius: 1rem;
+}
