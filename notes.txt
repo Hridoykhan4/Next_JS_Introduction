@@ -48,3 +48,54 @@ mane about route e gele ei proxy te jabe then abar home route e redirect korbo
 ====================
     Proxy.js Middleware er replace version
 ===================
+
+--------------------
+metadata ami post component e use kori;
+changing in the main layout metadata in the module 3
+export const metadata = {
+  title: {
+    default: "Learning NextJS",
+    template: "%s | Learning NextJS",
+  },
+  description:
+    "Start your NextJS journey with Hridoy, let's see what we can build together",
+};
+%s ekhane dynamic thakbe r learning nextJS shob title e thakbe
+export const metadata = {
+    title: "All posts",
+    description: 'Loading JSON placeholder posts using server components'
+}
+top most component er metadata egula children page inherit kore ney
+
+
+Dynamic meta data load
+export async function generateMetadata({ params }) {
+  const slug = (await params).postId
+  // fetch post information
+  const post = await getSinglePost(slug);
+
+  return {
+    title: post.title,
+    description: post.body,
+  }
+}
+post details component e dynamic korsi
+
+ {
+        title: phone?.name,
+        description: phone.slug,
+        generator: 'Next.js',
+        /* Keywords important */
+        keywords: ['NextJS', 'iphone', 'samsung'],
+        authors: [{name: 'Hridoy'}, {name: "Emon"}],
+        creator: "Hridoy CBDL",
+        publisher: "Compliance BD",
+        formatDetection: {
+            email: false,
+            address: false
+        }
+    }
+
+    extra metatag
+
+-------------------

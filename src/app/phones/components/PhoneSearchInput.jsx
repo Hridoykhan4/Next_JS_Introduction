@@ -3,10 +3,9 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const PhoneSearchInput = () => {
-    const [phones, setPhones] = useState([]);
     const [search, setSearch] = useState('s');
     const pathname = usePathname();
-    const router = useRouter()
+    const router = useRouter();
 
     useEffect(() => {
         const query = { search };

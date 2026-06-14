@@ -1,28 +1,36 @@
 import style from '../phone.module.css'
+
+
+const fetchPhone = async (slug) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${slug}`);
+    const data = await res.json();
+    return data.data;
+}
+
+export async function generateMetadata({ params }) {
+    const slug = (await params).slug;
+    const phone = await fetchPhone(slug);
+    return {
+        title: phone?.name,
+        description: phone.slug,
+        generator: 'Next.js',
+        /* Keywords important */
+        keywords: ['NextJS', 'iphone', 'samsung'],
+        authors: [{name: 'Hridoy'}, {name: "Emon"}],
+        creator: "Hridoy CBDL",
+        publisher: "Compliance BD",
+        formatDetection: {
+            email: false,
+            address: false
+        }
+    }
+}
+
+
 const PhoneDetails = async ({ params }) => {
     const { slug } = await params;
-    const fetchPhone = async () => {
-        const res = await fetch(`https://openapi.programming-hero.com/api/phone/${slug}`);
-        const data = await res.json();
-        return data.data;
-    }
-    const phone = await fetchPhone();
-    /* {
-     mainFeatures: {
-       storage: '32GB storage, no card slot',
-       displaySize: '1.9 inches',
-       chipSet: 'Apple S7',
-       memory: '32GB',
-       sensors: Array(8) [
-         'Accelerometer', 'gyro', 'heart rate', 'barometer', 'always-on altimeter',
-         'compass', 'SpO2', 'VO2max'
-       ]
-     },
-     slug: 'apple_watch_series_7_aluminum-11107',
-     name: 'Watch Series 7 Aluminum',
-     releaseDate: 'Released 2021, October 15',
+    const phone = await fetchPhone(slug);
    
-   } */
     return (
         <div className={`${style['phone-container']}`}>
 
@@ -37,7 +45,7 @@ const PhoneDetails = async ({ params }) => {
             <ul>
                 {
                     Object.entries(phone?.mainFeatures).map(([k, v]) => {
-                        return Array?.isArray(v) ? <li>{k}: {v.join(' || ')}</li> : <li>${k} : ${v}</li>
+                        return Array?.isArray(v) ? <li key={k}>{k}: {v.join(' || ')}</li> : <li key={k}>${k} : ${v}</li>
                     })
                 }
             </ul>

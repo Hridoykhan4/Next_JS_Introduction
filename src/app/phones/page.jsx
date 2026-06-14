@@ -1,9 +1,15 @@
 import PhoneSearchInput from './components/PhoneSearchInput';
 import style from './phone.module.css'
 import Link from 'next/link';
+
+export const metadata = {
+    title: "All Phones",
+    description: 'Loading all phone data of iphone, samsung & our brands'
+}
+
+
 export default async function PhonePage({ searchParams }) {
     const { search } = await searchParams;
-
 
     const fetchPhones = async () => {
         try {

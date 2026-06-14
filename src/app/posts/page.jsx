@@ -10,9 +10,15 @@ export const getPosts = async () => {
  * server json placeholder er api call kore data niye ashtase, 
  * kono api call hy nai, pura html e server end theke ashse
 */
-
+export const metadata = {
+    title: "All posts",
+    description: 'Loading JSON placeholder posts using server components'
+}
 export default async function Posts() {
     const posts = await getPosts()
+
+
+
 
     return (
         <div>

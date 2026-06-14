@@ -9,6 +9,19 @@ const getSinglePost = async (postId) => {
   return data
 }
 
+export async function generateMetadata({ params }) {
+  const slug = (await params).postId
+  // fetch post information
+  const post = await getSinglePost(slug);
+
+  return {
+    title: post.title,
+    description: post.body,
+  }
+}
+
+// export default function Page({ params, searchParams }) { }
+
 export default async function PostDetails({ params }) {
   const { postId } = await params;
   const post = await getSinglePost(postId)
