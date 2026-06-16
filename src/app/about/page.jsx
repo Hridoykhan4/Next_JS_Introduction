@@ -1,7 +1,11 @@
 // Eta use korte hobe shobar upore
+
+export const metadata = {
+    title: "About",
+    description: "This is about my next JS journey"
+}
+
 const AboutPage = () => {
-
-
     return (
         <div>
             <p className="text-3xl font-bold">About Page</p>
