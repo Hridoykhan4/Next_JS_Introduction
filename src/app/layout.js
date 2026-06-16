@@ -1,16 +1,13 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  weight: ["400", "600", "700"],
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
 });
 
 export const metadata = {
@@ -18,17 +15,14 @@ export const metadata = {
     default: "Learning NextJS",
     template: "%s | Learning NextJS",
   },
-  keywords: ["Next.JS", "React ", "Learning", "Playground"],
+  keywords: ["Next.JS", "React", "Learning", "Playground"],
   description:
     "Start your NextJS journey with Hridoy, let's see what we can build together",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${poppins.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Navbar></Navbar>
         <main className="grow p-10">{children}</main>

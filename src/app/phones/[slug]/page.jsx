@@ -15,7 +15,8 @@ export async function generateMetadata({ params }) {
         description: phone.slug,
         generator: 'Next.js',
         /* Keywords important */
-        keywords: ['NextJS', 'iphone', 'samsung'],
+        // Keywords layout theke inherit kortase, chaile dite pari
+        // keywords: ['NextJS', 'iphone', 'samsung'],
         authors: [{name: 'Hridoy'}, {name: "Emon"}],
         creator: "Hridoy CBDL",
         publisher: "Compliance BD",
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }) {
 const PhoneDetails = async ({ params }) => {
     const { slug } = await params;
     const phone = await fetchPhone(slug);
-   
+    
     return (
         <div className={`${style['phone-container']}`}>
 

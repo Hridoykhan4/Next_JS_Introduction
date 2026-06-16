@@ -99,3 +99,6 @@ post details component e dynamic korsi
     extra metatag
 
 -------------------
+
+------------------
+font meals page e r korsi r layout page e

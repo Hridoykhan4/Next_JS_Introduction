@@ -1,3 +1,7 @@
+export const metadata = {
+    title: "Our Offices",
+    description: "Our offices in Bangladesh to teach students NextJS"
+}
 const OfficePage = () => {
     return (
         <div>

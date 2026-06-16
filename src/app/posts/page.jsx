@@ -17,13 +17,10 @@ export const metadata = {
 export default async function Posts() {
     const posts = await getPosts()
 
-
-
-
     return (
         <div>
             <h2 className="underline">Total Posts : {posts?.length}</h2>
-            <div className="grid mt-6 grid-cols-4 gap-6">
+            <div className="grid mt-6 lg:grid-cols-4 grid-cols-2 gap-6">
                 {
                     posts.map(post => (
                         <div key={post.id} className="border p-6 rounded flex flex-col">
