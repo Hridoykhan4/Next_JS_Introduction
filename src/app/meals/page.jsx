@@ -72,7 +72,7 @@ export default async function MealsPage({ searchParams }) {
                         </div>
                     ))
                 }
-            </div>
+            </div> 
         </div>
     )
 }
