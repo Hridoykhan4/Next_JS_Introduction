@@ -107,3 +107,28 @@ font meals page e r korsi r layout page e
 Create API - Route Handlers
 /api/items er moddhe amra api use korsi
 ----------------------------
+
+---------------------
+catching
+  const res = await fetch('http://localhost:3000/api/items', {
+        // Forcefully cache koracchi, jeno barbar network request na kre
+        cache: 'force-cache'
+    });
+    ebar amra jkhn product add korbo tokhon jeno catch na kore ejnne 
+    export async function POST(req) {
+  try {
+    const { productName } = await req.json();
+    if (!productName)
+      return Response.json({
+        success: false,
+        message: "Product name is required",
+      });
+    const result = await dbConnect("practice_data").insertOne({
+      productName,
+      status: 201,
+    });
+    revalidatePath('/products')
+    return Response.json({ result, success: true }, { status: 201 });
+  }
+  product add howar por products route ta revalidate korlam
+-----------------------

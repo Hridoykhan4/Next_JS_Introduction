@@ -36,7 +36,9 @@ export default async function MealsPage({ searchParams }) {
 
     const fetchMeals = async () => {
         try {
-            const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
+            const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`, {
+                cache: 'force-cache'
+            });
             const data = await res.json();
             return data.meals
         }

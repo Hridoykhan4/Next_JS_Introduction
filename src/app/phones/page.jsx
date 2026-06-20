@@ -13,7 +13,9 @@ export default async function PhonePage({ searchParams }) {
     const { search } = await searchParams;
     const fetchPhones = async () => {
         try {
-            const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${search || 's'}`);
+            const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${search || 's'}`, {
+                cache: 'force-cache'
+            });
             const data = await res.json();
             return data.data
         }

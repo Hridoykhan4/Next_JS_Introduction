@@ -1,14 +1,38 @@
 import dbConnect from "@/lib/dbConnect";
+import { revalidatePath } from "next/cache";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const data = await dbConnect("practice_data").find({}).toArray();
-  return Response.json({ data });
+  try {
+    const data = await dbConnect("practice_data").find({}).toArray();
+    return Response.json({ success: true, data });
+  } catch (err) {
+    return Response.json(
+      { success: false, error: err.message },
+      { status: 500 },
+    );
+  }
 }
 
 export async function POST(req) {
-  const postedData = await req.json();
-  const result = await dbConnect("practice_data").insertOne(postedData);
-  return Response.json(result);
+  try {
+    const { productName } = await req.json();
+    if (!productName)
+      return Response.json({
+        success: false,
+        message: "Product name is required",
+      });
+    const result = await dbConnect("practice_data").insertOne({
+      productName,
+      status: 201,
+    });
+    revalidatePath('/products')
+    return Response.json({ result, success: true }, { status: 201 });
+  } catch (err) {
+    return Response.json(
+      { success: false, error: err.message },
+      { status: 500 },
+    );
+  }
 }
