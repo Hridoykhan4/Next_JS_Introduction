@@ -4,7 +4,6 @@ export const dynamic = "force-static";
 
 export async function GET() {
   const data = await dbConnect("practice_data").find({}).toArray();
-  console.log(data);
   return Response.json({ data });
 }
 
