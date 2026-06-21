@@ -130,5 +130,36 @@ catching
     revalidatePath('/products')
     return Response.json({ result, success: true }, { status: 201 });
   }
-  product add howar por products route ta revalidate korlam
+  revalidate('/products')
+  product add howar por products route ta revalidate korlam, I mean cache clear kore abar call 
+  korlam
+
 -----------------------
+
+
+
+-----------------------------
+server side theke redirect korte redirect('/') use korbo, products page dekho
+-----------------------------
+
+
+----------------------------------------- important
+Jokhon amar redirect kore /dashboard/products/add e jabe when customer selects add from the Navbar
+  async redirects() {
+    return [
+      // Basic redirect
+      {
+        source: '/about',
+        destination: '/',
+        permanent: true,
+      },
+      // Wildcard path matching
+      {
+        source: '/blog/:slug',
+        destination: '/news/:slug',
+        permanent: true,
+      },
+    ]
+  },
+
+-----------------------------------------

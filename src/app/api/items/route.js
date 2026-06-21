@@ -18,11 +18,15 @@ export async function GET() {
 export async function POST(req) {
   try {
     const { productName } = await req.json();
-    if (!productName)
-      return Response.json({
-        success: false,
-        message: "Product name is required",
-      });
+   if (!productName || productName.trim() === "") {
+     return Response.json(
+       {
+         success: false,
+         message: "Product name is required and cannot be empty",
+       },
+       { status: 400 },
+     ); 
+   }
     const result = await dbConnect("practice_data").insertOne({
       productName,
       status: 201,

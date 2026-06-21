@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export const metadata = {
     title: "Products",
     description: "All about our Compliance BD Products"
@@ -8,7 +10,11 @@ const Products = async () => {
         // Forcefully cache koracchi, jeno barbar network request na kre
         cache: 'force-cache'
     });
+
     const { data: products } = await res.json();
+
+    // if(products?.length > 5) redirect('/')
+
     return (
         <div>
             <div className="grid grid-cols-4 gap-5">

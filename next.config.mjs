@@ -13,6 +13,18 @@ const nextConfig = {
     ],
   },
   reactCompiler: true,
+
+  async redirects() {
+    return [
+      // Basic redirect
+      {
+        source: "/products/add",
+        destination: "/admin-dashboard/products/add",
+        permanent: true,
+      },
+   
+    ];
+  },
 };
 
 export default nextConfig;
