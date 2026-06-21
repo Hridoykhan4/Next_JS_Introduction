@@ -1,15 +1,15 @@
-const layout = ({children}) => {
+const layout = ({ children }) => {
     return (
         <div>
             <div className="grid grid-cols-12 gap-4">
-            <ul className="col-span-3">
-                <li>Admin Stats</li>
-                <li>Sells Report</li>
-                <li>Profile</li>
-            </ul>
-            <div>
-                {children}
-            </div>
+                <ul className="col-span-3">
+                    <li>Admin Stats</li>
+                    <li>Sells Report</li>
+                    <li>Profile</li>
+                </ul>
+                <div>
+                    {children}
+                </div>
             </div>
         </div>
     );

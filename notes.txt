@@ -163,3 +163,13 @@ Jokhon amar redirect kore /dashboard/products/add e jabe when customer selects a
   },
 
 -----------------------------------------
+
+--------------------------
+# Both server & clinet e available thakbe, 
+# NEXT_PUBLIC_API_URL=http://  .env.local e 
+--------------------------
+
+
+--------------------------
+  
+--------------------------

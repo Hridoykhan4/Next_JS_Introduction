@@ -1,30 +1,26 @@
-import { redirect } from "next/navigation";
+import dbConnect from "@/lib/dbConnect";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
     title: "Products",
     description: "All about our Compliance BD Products"
-}
+};
 
 const Products = async () => {
-    const res = await fetch('http://localhost:3000/api/items', {
-        // Forcefully cache koracchi, jeno barbar network request na kre
-        cache: 'force-cache'
-    });
-
-    const { data: products } = await res.json();
-
-    // if(products?.length > 5) redirect('/')
+    const products = await dbConnect("practice_data")
+        .find({})
+        .sort({ _id: -1 })
+        .toArray();
 
     return (
         <div>
             <div className="grid grid-cols-4 gap-5">
-                {
-                    products.map(product => (
-                        <div className="border p-5 rounded-2xl" key={product._id}>
-                            {product?.productName}
-                        </div>
-                    ))
-                }
+                {products?.map((product) => (
+                    <div className="border p-5 rounded-2xl" key={product._id}>
+                        {product?.productName}
+                    </div>
+                ))}
             </div>
         </div>
     );
