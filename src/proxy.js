@@ -1,17 +1,22 @@
 import { NextResponse } from "next/server";
 
 export function proxy(request) {
-    // console.log(request.cookies.get("nextjs-token").value);
-  let isServicePage =   request.nextUrl.pathname.startsWith('/services')
+  const url = request?.url ? new URL(request.url) : null;
+  const pathname = request?.nextUrl?.pathname || url?.pathname || "/";
+  const isServicePage =
+    typeof pathname === "string" && pathname.startsWith("/services");
+
   const dummyUserData = {
-    role: 'user',
-    email: 'test@admin.com'
+    role: "user",
+    email: "test@admin.com",
+  };
+  const isAdmin = dummyUserData.role === "admin";
+
+  if (isServicePage && !isAdmin && url) {
+    return NextResponse.redirect(new URL("/login", url));
   }
-  let isAdmin = dummyUserData.role === 'admin' 
 
-  if(isServicePage && !isAdmin) return NextResponse.redirect(new URL('/login', request.url))
-
-  return NextResponse.next()
+  return NextResponse.next();
 }
 
 /* export const config = {

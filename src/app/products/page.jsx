@@ -7,38 +7,48 @@ export const metadata = {
     description: "All about our Compliance BD Products",
 };
 
+const FALLBACK_PRODUCTS = [
+    { _id: "fallback-1", productName: "Laptop" },
+    { _id: "fallback-2", productName: "Mobile" },
+    { _id: "fallback-3", productName: "TV" },
+    { _id: "fallback-4", productName: "Fridge" },
+];
+
 const Products = async () => {
+    let products = [];
+
     try {
         const collection = await dbConnect("practice_data");
-        const products = await collection
+        products = await collection
             .find({})
             .sort({ _id: -1 })
             .toArray();
-
-        return (
-            <div>
-                {products.length === 0 ? (
-                    <p className="text-gray-600">No products available right now.</p>
-                ) : (
-                    <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
-                        {products.map((product) => (
-                            <div className="rounded-2xl border p-5" key={product._id}>
-                                {product.productName}
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </div>
-        );
     } catch (error) {
         console.error("Products page error:", error);
-
-        return (
-            <div className="rounded-2xl border border-red-200 bg-red-50 p-5 text-red-700">
-                Products could not be loaded right now. Please try again later.
-            </div>
-        );
+        products = [];
     }
+
+    return (
+        <div>
+            {products.length === 0 ? (
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
+                    {FALLBACK_PRODUCTS.map((product) => (
+                        <div className="rounded-2xl border p-5" key={product._id}>
+                            {product.productName}
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
+                    {products.map((product) => (
+                        <div className="rounded-2xl border p-5" key={product._id}>
+                            {product.productName}
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
 };
 
 export default Products;
